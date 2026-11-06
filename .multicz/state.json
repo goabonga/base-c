@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "git_head": "9494d084c80a0773377a33ae0184d5f2dd97fac4",
+  "git_head_short": "9494d08",
+  "timestamp": "2026-11-06T01:32:36Z",
+  "components": {
+    "base-c": {
+      "version": "0.1.0",
+      "tag": "v0.1.0",
+      "tag_sha": null
+    }
+  }
+}

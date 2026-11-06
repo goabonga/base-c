@@ -6,7 +6,7 @@
 
 #include <stddef.h>
 
-#define BASE_VERSION "0.0.0"
+#define BASE_VERSION "0.1.0"
 
 /*
  * Writes "Hello, <name>!" into buf (NUL-terminated, truncated to size).
