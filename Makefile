@@ -9,7 +9,7 @@ BUILD   := build
 
 LIB_OBJ := $(BUILD)/base.o
 
-.PHONY: all clean install
+.PHONY: all test clean install
 
 all: $(BUILD)/base-c
 
@@ -21,6 +21,14 @@ $(BUILD)/%.o: src/%.c include/base.h | $(BUILD)
 
 $(BUILD):
 	mkdir -p $@
+
+# Unit tests, built with the address and undefined behaviour sanitizers.
+test: $(BUILD)/test_base
+	$(BUILD)/test_base
+
+$(BUILD)/test_base: tests/test_base.c src/base.c include/base.h | $(BUILD)
+	$(CC) $(CFLAGS) -g -fsanitize=address,undefined -fno-sanitize-recover=all \
+		$(LDFLAGS) -o $@ tests/test_base.c src/base.c
 
 install: all
 	install -Dm755 $(BUILD)/base-c $(DESTDIR)$(PREFIX)/bin/base-c
